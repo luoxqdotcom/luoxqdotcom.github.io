@@ -5,6 +5,7 @@
 <meta name="viewport" content="initial-scale=1">
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <style>
+
 #container {
 	border: 0px solid gray;
 	border-radius: 5px;
@@ -20,7 +21,7 @@ body{
 	padding:0 0 0 0;
  	background-color: #FFFFFF;
  	text-align: center;
- 	width: 100vw;
+ 	
 }
 
 #header{
@@ -86,14 +87,13 @@ body{
 	点击某个卡片可以查看它背面的数字。请用最少的点击次数找到指定的数字. 
 </div>
 
-	<div class="descr">
+<div class="descr">
 	请找到 <span id='target' class='big'></span> 你已经点击 <span id="steps" class='big'>0</span>次
 	<span id="msg" class="big">还没有找到，继续努力！</span>
-	</div>
-
-<div id='reset' class="big descr" style="cursor: pointer;">
-	重来
+	<a id='reset' style="cursor: pointer;">重来</a>
 </div>
+
+
 
 <div id="container">
 
