@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>二分查找 - 算法游戏</title>
+<meta name="viewport" content="width=500, initial-scale=1">
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<style>
+#container {
+	border: 0px solid gray;
+	border-radius: 5px;
+	display: block;
+	float: center;
+	width: -webkit-fit-content;
+  	width: fit-content;
+  	padding: 5px 5px 5px 5px;
+}
+
+body{
+	margin: 0 0 0 0;
+	padding:0 0 0 0;
+ 	background-color: #FFFFFF;
+ 	text-align: center;
+}
+
+#header{
+	background-color:#0769ad;
+	color: #FFFFFF;
+	margin: 0 0 0 0;
+	padding: 5px 5px 5px 5px;
+	height: 50px;
+	font-size: 30px;
+	line-height: 50px;
+}
+
+.card{
+  float: left;
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin: 2px 2px 2px 2px;
+  text-align: center;
+  color: gray;
+  vertical-align: middle;
+  cursor: pointer;
+   -moz-box-shadow: 2px 2px 3px #c0c0c0; 
+   -webkit-box-shadow: 1px 2px 3px #c0c0c0; 
+   box-shadow: 2px 2px 3px #c0c0c0; 
+}
+
+.flipped{
+	background-color: #0095ff;
+	color: #FFFFFF;
+}
+
+.descr{
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin: 10px 10px 10px 10px;
+	padding: 5px;
+}
+
+.big{
+	color: #0095ff;
+	font-size: 20px;
+}
+
+.shadow{
+   -moz-box-shadow: 3px 3px 4px #000; 
+   -webkit-box-shadow: 3px 3px 4px #000; 
+   box-shadow: 3px 3px 4px #000; 
+}
+
+</style>
+</head>
+
+<body>
+<div id="header">
+查找游戏
+</div>
+<div id="descr" class="descr">
+	下面有标号0-99的一百个卡片。每个卡片背面一个随机数字。所有的卡片已经按照背面数字从小到大的顺序排好。
+	点击某个卡片可以查看它背面的数字。请用最少的点击次数找到指定的数字. 
+</div>
+
+	<div class="descr">
+	请找到 <span id='target' class='big'></span> 你已经点击 <span id="steps" class='big'>0</span>次
+	<span id="msg" class="big">还没有找到，继续努力！</span>
+	</div>
+
+<div id='reset' class="big descr" style="cursor: pointer;">
+	重来
+</div>
+
+<div id="container">
+
+
+</div>
+
+<script language="javascript">
+
+function rand(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+
+
+var values = []
+var value = rand(100)
+var toFind = rand(99);
+var step =0
+
+for(var i=0;i<100;i++){
+  values[i]=value
+  value = value + rand(100)
+}
+
+function flip(){
+	var idx = this.id.substring(4)
+	if(!$(this).hasClass("flipped")){
+		$(this).html(values[idx]).addClass("flipped");
+		step++;
+		$("#steps").html(step);
+		if($(this).text() == ''+values[toFind]){
+			$("#msg").html("恭喜你找到了！")
+			alert("恭喜你找到了！");
+		}
+		if(step>7){
+			$("#msg").html("这样不行啊！超过7次了！")
+		}
+	}
+}
+
+function init(){
+	value = rand(100)
+	toFind = rand(99);
+	step =0
+
+	for(var i=0;i<100;i++){
+	  values[i]=value
+	  value = value + rand(100)
+	}
+
+
+	$("#container").empty();
+	for(var i=0;i<100;i++){
+	  $("#container").append("<div id='card"+i+"' class='card'>"+i+"</div>");
+	}
+	for(var i=0;i<100;i++){
+		var x = i;
+	  	$("#card"+i).click(flip);
+	  	$("#card"+i).hover(function()
+			{ 
+			   $(this).toggleClass('shadow');
+			});
+	}
+	$("#target").html(values[toFind])
+	step = 0
+	$("#msg").html("还没有找到，继续努力！")
+	$("#reset").click(init);
+	$("#steps").html("0");
+}
+
+
+init();
+
+
+</script>
+
+</body>
+
+</html>
