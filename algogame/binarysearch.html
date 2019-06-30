@@ -127,8 +127,8 @@ function flip(){
 		if($(this).text() == ''+values[toFind]){
 			$("#msg").html("恭喜你找到了！")
 			alert("恭喜你找到了！");
-		}
-		if(step>7){
+			init();
+		}else if(step>7){
 			$("#msg").html("这样不行啊！超过7次了！")
 		}
 	}
