@@ -83,7 +83,7 @@ body{
 二分查找
 </div>
 <div id="descr" class="descr">
-	下面有标号0-99的一百个卡片。每个卡片背面一个随机数字。所有的卡片已经按照背面数字从小到大的顺序排好。
+	下面有一百个卡片。每个卡片背面一个随机数字。所有的卡片已经按照背面数字从小到大的顺序排好。
 	点击某个卡片可以查看它背面的数字。请用最少的点击次数找到指定的数字. 
 </div>
 
@@ -112,6 +112,7 @@ var values = []
 var value = rand(100)
 var toFind = rand(99);
 var step =0
+var found = false
 
 for(var i=0;i<100;i++){
   values[i]=value
@@ -127,16 +128,18 @@ function flip(){
 		if($(this).text() == ''+values[toFind]){
 			$("#msg").html("恭喜你找到了！")
 			alert("恭喜你找到了！");
-		}else if(step>7){
+			found = true;
+		}else if(step>7 && !found){
 			$("#msg").html("这样不行啊！超过7次了！")
 		}
 	}
 }
 
 function init(){
-	value = rand(100)
+	value = rand(100);
 	toFind = rand(99);
-	step =0
+	step =0;
+	found = false;
 
 	for(var i=0;i<100;i++){
 	  values[i]=value
