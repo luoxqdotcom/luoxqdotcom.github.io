@@ -163,16 +163,16 @@ function init(){
 			   $(this).toggleClass('shadow');
 			});
 	}
-	$("#target").html(values[toFind])
-	step = 0
-	$("#msg").html("还没有找到，继续努力！")
-	$("#reset").click(init);
+	$("#target").html(values[toFind]);
+	step = 0;
+	$("#msg").html("还没有找到，继续努力！");
 	$("#steps").html("0");
 }
 
 
 init();
 
+$("#reset").click(init);
 
 </script>
 
