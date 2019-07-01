@@ -89,8 +89,9 @@ body{
 
 <div class="descr">
 	请找到 <span id='target' class='big'></span> 你已经点击 <span id="steps" class='big'>0</span>次
-	<span id="msg" class="big">还没有找到，继续努力！</span>
 	<a id='reset' style="cursor: pointer;">重来</a>
+	<div id="msg" class="big">还没有找到，继续努力！</div>
+
 </div>
 
 
@@ -148,9 +149,12 @@ function init(){
 
 
 	$("#container").empty();
+
+        var str=''
 	for(var i=0;i<100;i++){
-	  $("#container").append("<div id='card"+i+"' class='card'>"+i+"</div>");
+	  str += "<div id='card"+i+"' class='card'>"+i+"</div>";
 	}
+        $("#container").append(str);
 	for(var i=0;i<100;i++){
 		var x = i;
 	  	$("#card"+i).click(flip);
