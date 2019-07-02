@@ -2,18 +2,12 @@
 <html>
 <head>
 <title>二分查找 - 算法游戏</title>
-<meta name="viewport" content="initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <style>
-
-#container {
-	border: 0px solid gray;
-	border-radius: 5px;
-	display: block;
-	float: center;
-	width: -webkit-fit-content;
-  	width: fit-content;
-  	padding: 5px 5px 5px 5px;
+* {
+	box-sizing: border-box;
+	padding: 0 0 0 0;
 }
 
 body{
@@ -21,8 +15,88 @@ body{
 	padding:0 0 0 0;
  	background-color: #FFFFFF;
  	text-align: center;
- 	
+	width: 100%; 	
 }
+
+
+#container {
+	display: block;
+	width: 326px;
+  	margin: 0 auto;
+}
+
+
+ @media screen and (min-width: 100px) {
+	#container {
+		display: block;
+		width: 100px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 150px) {
+	#container {
+		display: block;
+		width: 150px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 200px) {
+	#container {
+		display: block;
+		width: 200px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 250px) {
+	#container {
+		display: block;
+		width: 250px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 300px) {
+	#container {
+		display: block;
+		width: 300px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 350px) {
+	#container {
+		display: block;
+		width: 350px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 400px) {
+	#container {
+		display: block;
+		width: 400px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 450px) {
+	#container {
+		display: block;
+		width: 450px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 500px) {
+	#container {
+		display: block;
+		width: 500px;
+	  	margin: 0 auto;
+	}
+}
+
+
+
 
 #header{
 	background-color:#0769ad;
@@ -37,12 +111,12 @@ body{
 .card{
   float: left;
   display: block;
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   line-height: 50px;
-  border: 1px solid gray;
+  
   border-radius: 5px;
-  margin: 2px 2px 2px 2px;
+  margin: 3px 3px 3px 3px;
   text-align: center;
   color: gray;
   vertical-align: middle;
@@ -50,6 +124,8 @@ body{
    -moz-box-shadow: 2px 2px 3px #c0c0c0; 
    -webkit-box-shadow: 1px 2px 3px #c0c0c0; 
    box-shadow: 2px 2px 3px #c0c0c0; 
+   border: 0px solid #c0c0c0;
+   background-color: #f0f0f0;
 }
 
 .flipped{
@@ -58,10 +134,11 @@ body{
 }
 
 .descr{
-	border: 1px solid gray;
 	border-radius: 5px;
 	margin: 10px 10px 10px 10px;
 	padding: 5px;
+	border: 0px solid #c0c0c0;
+   	background-color: #f0f0f0;
 }
 
 .big{
@@ -75,15 +152,20 @@ body{
    box-shadow: 3px 3px 4px #000; 
 }
 
+#reset{
+	text-decoration: underline;
+}
+
 </style>
 </head>
 
 <body>
+
 <div id="header">
 二分查找
 </div>
 <div id="descr" class="descr">
-	下面有一百个卡片编号0-99。每个卡片背面一个随机数字。所有的卡片已经按照背面数字从小到大的顺序排好。
+	下面有一百个卡片。每个卡片背面一个随机数字。所有的卡片已经按照背面数字从小到大的顺序排好。
 	点击某个卡片可以查看它背面的数字。请用最少的点击次数找到指定的数字. 
 </div>
 
@@ -108,6 +190,7 @@ function rand(max) {
 }
 
 
+var emoji=0x1f600
 
 var values = []
 var value = rand(100)
@@ -128,7 +211,7 @@ function flip(){
 		$("#steps").html(step);
 		if($(this).text() == ''+values[toFind]){
 			$("#msg").html("恭喜你找到了！")
-			alert("恭喜你找到了！");
+			setTimeout(function(){alert("恭喜你找到了！");},10);
 			found = true;
 		}else if(step>7 && !found){
 			$("#msg").html("这样不行啊！超过7次了！")
@@ -152,7 +235,7 @@ function init(){
 
         var str=''
 	for(var i=0;i<100;i++){
-	  str += "<div id='card"+i+"' class='card'>"+i+"</div>";
+	  str += "<div id='card"+i+"' class='card'>&#"+(emoji+rand(80))+";</div>";
 	}
         $("#container").append(str);
 	for(var i=0;i<100;i++){
