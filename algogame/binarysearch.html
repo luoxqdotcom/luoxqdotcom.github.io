@@ -2,7 +2,7 @@
 <html>
 <head>
 <title>二分查找 - 算法游戏</title>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <style>
 * {
@@ -104,7 +104,7 @@ body{
 	margin: 0 0 0 0;
 	padding: 5px 5px 5px 5px;
 	height: 50px;
-	font-size: 30px;
+	font-size: 26px;
 	line-height: 50px;
 }
 
@@ -135,10 +135,12 @@ body{
 
 .descr{
 	border-radius: 5px;
-	margin: 10px 10px 10px 10px;
+	margin: 10px auto;
 	padding: 5px;
 	border: 0px solid #c0c0c0;
    	background-color: #f0f0f0;
+   	max-width: 500px;
+
 }
 
 .big{
@@ -164,14 +166,11 @@ body{
 <div id="header">
 二分查找
 </div>
-<div id="descr" class="descr">
-	下面有一百个卡片。每个卡片背面一个随机数字。所有的卡片已经按照背面数字从小到大的顺序排好。
-	点击某个卡片可以查看它背面的数字。请用最少的点击次数找到指定的数字. 
-</div>
 
 <div class="descr">
-	请找到 <span id='target' class='big'></span> 你已经点击 <span id="steps" class='big'>0</span>次
-	<a id='reset' style="cursor: pointer;">重来</a>
+	<div>&#x1F50E;请找到数字<span id='target' class='big'></span></div>
+	<div>你已经点击<span id="steps" class='big'>0</span>个卡片。<span id='reset' style="cursor: pointer;">重来</span></div>
+	
 	<div id="msg" class="big">还没有找到，继续努力！</div>
 
 </div>
