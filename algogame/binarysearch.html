@@ -196,8 +196,9 @@ var value = rand(100)
 var toFind = rand(99);
 var step =0
 var found = false
+var count=126
 
-for(var i=0;i<100;i++){
+for(var i=0;i<count;i++){
   values[i]=value
   value = value + rand(100)
 }
@@ -224,7 +225,7 @@ function init(){
 	step =0;
 	found = false;
 
-	for(var i=0;i<100;i++){
+	for(var i=0;i<count;i++){
 	  values[i]=value
 	  value = value + rand(100)
 	}
@@ -233,11 +234,11 @@ function init(){
 	$("#container").empty();
 
         var str=''
-	for(var i=0;i<100;i++){
+	for(var i=0;i<count;i++){
 	  str += "<div id='card"+i+"' class='card'>&#"+(emoji+rand(80))+";</div>";
 	}
         $("#container").append(str);
-	for(var i=0;i<100;i++){
+	for(var i=0;i<count;i++){
 		var x = i;
 	  	$("#card"+i).click(flip);
 	  	$("#card"+i).hover(function()
