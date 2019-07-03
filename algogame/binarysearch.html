@@ -106,7 +106,7 @@ body{
 	padding: 5px 5px 5px 5px;
 	height: 50px;
 	font-size: 26px;
-	line-height: 50px;
+	line-height: 15px;
 }
 
 .card{
@@ -172,8 +172,24 @@ body{
    box-shadow: 3px 3px 4px #000; 
 }
 
-#reset{
-	text-decoration: underline;
+.resetButton{
+	font-size: 20px;
+	cursor: pointer;
+	text-decoration: none;
+	float: right;
+	padding: 2px;
+	line-height: 20px;
+}
+
+.helpButton {
+	float: right;
+	padding: 2px;
+	line-height: 20px;
+}
+
+.helpButton a {
+	text-decoration: none;
+	font-size: 20px;
 }
 
 
@@ -183,16 +199,16 @@ body{
 <body>
 
 <div id="header">
-二分查找
+	<span id='reset' class='resetButton'><a>&nbsp;&#128260;</a></span><span class='helpButton'><a href='binarysearch.help.html'>&#128214;</a></span>
+		<br>
+		二分查找	
 </div>
 
 <div class="container">
 <div class="descr">
 	<div>&#x1F50E;请找到数字<span id='target' class='big'></span></div>
-	<div>你已经点击<span id="steps" class='big'>0</span>个卡片。<span id='reset' style="cursor: pointer;">重来</span></div>
-	
+	<div>你已经点击<span id="steps" class='big'>0</span>个卡片。</div>
 	<div id="msg" class="big">还没有找到，继续努力！</div>
-
 </div>
 </div>
 
@@ -230,7 +246,10 @@ function flip(){
 		step++;
 		$("#steps").html(step);
 		if($(this).text() == ''+values[toFind]){
-			$("#msg").html("恭喜你找到了！")
+			$("#msg").html("你终于找到了！")
+			if(step <= 7){
+				$("#msg").html("你找到了！&#128175;")
+			}
 			setTimeout(function(){alert("恭喜你找到了！");},10);
 			found = true;
 		}else if(step>7 && !found){
