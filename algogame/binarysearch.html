@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>二分查找 - 算法游戏</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
@@ -19,7 +20,7 @@ body{
 }
 
 
-#container {
+.container {
 	display: block;
 	width: 326px;
   	margin: 0 auto;
@@ -27,28 +28,28 @@ body{
 
 
  @media screen and (min-width: 100px) {
-	#container {
+	.container {
 		display: block;
 		width: 100px;
 	  	margin: 0 auto;
 	}
 }
  @media screen and (min-width: 150px) {
-	#container {
+	.container {
 		display: block;
 		width: 150px;
 	  	margin: 0 auto;
 	}
 }
  @media screen and (min-width: 200px) {
-	#container {
+	.container {
 		display: block;
 		width: 200px;
 	  	margin: 0 auto;
 	}
 }
  @media screen and (min-width: 250px) {
-	#container {
+	.container {
 		display: block;
 		width: 250px;
 	  	margin: 0 auto;
@@ -56,7 +57,7 @@ body{
 }
 
  @media screen and (min-width: 300px) {
-	#container {
+	.container {
 		display: block;
 		width: 300px;
 	  	margin: 0 auto;
@@ -64,7 +65,7 @@ body{
 }
 
  @media screen and (min-width: 350px) {
-	#container {
+	.container {
 		display: block;
 		width: 350px;
 	  	margin: 0 auto;
@@ -72,7 +73,7 @@ body{
 }
 
  @media screen and (min-width: 400px) {
-	#container {
+	.container {
 		display: block;
 		width: 400px;
 	  	margin: 0 auto;
@@ -80,7 +81,7 @@ body{
 }
 
  @media screen and (min-width: 450px) {
-	#container {
+	.container {
 		display: block;
 		width: 450px;
 	  	margin: 0 auto;
@@ -88,7 +89,7 @@ body{
 }
 
  @media screen and (min-width: 500px) {
-	#container {
+	.container {
 		display: block;
 		width: 500px;
 	  	margin: 0 auto;
@@ -113,7 +114,7 @@ body{
   display: block;
   width: 44px;
   height: 44px;
-  line-height: 50px;
+  line-height: 15px;
   
   border-radius: 5px;
   margin: 3px 3px 3px 3px;
@@ -128,6 +129,10 @@ body{
    background-color: #f0f0f0;
 }
 
+.cardLabel{
+	line-height: 44px;
+}
+
 .flipped{
 	background-color: #0095ff;
 	color: #FFFFFF;
@@ -140,7 +145,20 @@ body{
 	border: 0px solid #c0c0c0;
    	background-color: #f0f0f0;
    	max-width: 500px;
+}
 
+.smallfont{
+	font-size: 10px;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.emoji{
+	margin: auto auto;
+	float: center;
+	text-align: center;
+	font-size: 30px;
 }
 
 .big{
@@ -158,6 +176,7 @@ body{
 	text-decoration: underline;
 }
 
+
 </style>
 </head>
 
@@ -167,6 +186,7 @@ body{
 二分查找
 </div>
 
+<div class="container">
 <div class="descr">
 	<div>&#x1F50E;请找到数字<span id='target' class='big'></span></div>
 	<div>你已经点击<span id="steps" class='big'>0</span>个卡片。<span id='reset' style="cursor: pointer;">重来</span></div>
@@ -174,10 +194,10 @@ body{
 	<div id="msg" class="big">还没有找到，继续努力！</div>
 
 </div>
+</div>
 
 
-
-<div id="container">
+<div id="container" class="container">
 
 
 </div>
@@ -206,7 +226,7 @@ for(var i=0;i<count;i++){
 function flip(){
 	var idx = this.id.substring(4)
 	if(!$(this).hasClass("flipped")){
-		$(this).html(values[idx]).addClass("flipped");
+		$(this).html("<div class='cardLabel'>"+values[idx]+"</div>").addClass("flipped");
 		step++;
 		$("#steps").html(step);
 		if($(this).text() == ''+values[toFind]){
@@ -235,7 +255,7 @@ function init(){
 
         var str=''
 	for(var i=0;i<count;i++){
-	  str += "<div id='card"+i+"' class='card'>&#"+(emoji+rand(80))+";</div>";
+	  str += "<div id='card"+i+"' class='card'><div class='smallfont'>"+(i+1)+"</div><div class='emoji'>&#"+(emoji+rand(80))+";</div></div>";
 	}
         $("#container").append(str);
 	for(var i=0;i<count;i++){
