@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>二分查找 - 算法游戏</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<style>
+* {
+	box-sizing: border-box;
+	padding: 0 0 0 0;
+}
+
+body{
+	margin: 0 0 0 0;
+	padding:0 0 0 0;
+ 	background-color: #FFFFFF;
+ 	text-align: center;
+	width: 100%; 	
+}
+
+
+.container {
+	display: block;
+	width: 326px;
+  	margin: 0 auto;
+}
+
+
+ @media screen and (min-width: 100px) {
+	.container {
+		display: block;
+		width: 100px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 150px) {
+	.container {
+		display: block;
+		width: 150px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 200px) {
+	.container {
+		display: block;
+		width: 200px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 250px) {
+	.container {
+		display: block;
+		width: 250px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 300px) {
+	.container {
+		display: block;
+		width: 300px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 350px) {
+	.container {
+		display: block;
+		width: 350px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 400px) {
+	.container {
+		display: block;
+		width: 400px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 450px) {
+	.container {
+		display: block;
+		width: 450px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 500px) {
+	.container {
+		display: block;
+		width: 500px;
+	  	margin: 0 auto;
+	}
+}
+
+
+
+
+#header{
+	background-color:#0769ad;
+	color: #FFFFFF;
+	margin: 0 0 0 0;
+	padding: 5px 5px 5px 5px;
+	height: 50px;
+	font-size: 26px;
+	line-height: 15px;
+}
+
+.card{
+  float: left;
+  display: block;
+  width: 44px;
+  height: 44px;
+  line-height: 15px;
+  
+  border-radius: 5px;
+  margin: 3px 3px 3px 3px;
+  text-align: center;
+  color: gray;
+  vertical-align: middle;
+  cursor: pointer;
+   -moz-box-shadow: 2px 2px 3px #c0c0c0; 
+   -webkit-box-shadow: 1px 2px 3px #c0c0c0; 
+   box-shadow: 2px 2px 3px #c0c0c0; 
+   border: 0px solid #c0c0c0;
+   background-color: #f0f0f0;
+}
+
+.cardLabel{
+	line-height: 44px;
+}
+
+.flipped{
+	background-color: #0095ff;
+	color: #FFFFFF;
+}
+
+.descr{
+	border-radius: 5px;
+	margin: 10px auto;
+	padding: 5px;
+	border: 0px solid #c0c0c0;
+   	background-color: #f0f0f0;
+   	max-width: 500px;
+}
+
+.smallfont{
+	font-size: 10px;
+	padding: 0;
+	margin: 0;
+	text-align: left;
+}
+
+.emoji{
+	margin: auto auto;
+	float: center;
+	text-align: center;
+	font-size: 30px;
+}
+
+.big{
+	color: #0095ff;
+	font-size: 20px;
+}
+
+.shadow{
+   -moz-box-shadow: 3px 3px 4px #000; 
+   -webkit-box-shadow: 3px 3px 4px #000; 
+   box-shadow: 3px 3px 4px #000; 
+}
+
+.resetButton{
+	font-size: 20px;
+	cursor: pointer;
+	text-decoration: none;
+	float: right;
+	padding: 2px;
+	line-height: 20px;
+}
+
+.helpButton {
+	float: right;
+	padding: 2px;
+	line-height: 20px;
+}
+
+.helpButton a {
+	text-decoration: none;
+	font-size: 20px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="header">
+	<span id='reset' class='resetButton'><a>&nbsp;&#128260;</a></span><span class='helpButton'><a href='binarysearch.help.html'>&#128214;</a></span>
+		<br>
+		二分查找	
+</div>
+
+<div class="container">
+<div class="descr">
+二分查找是一种在排好序的元素中快速查找到目标元素的算法。
+查找时，先检查中间一个元素，如果目标比该元素小，就说明在目标在前半部分，因此范围缩小到二分之一。
+比如16个元素第一次查找至少可以把范围缩小到8个，在8个元素中再查看中间一个元素就至少可以把范围缩小到4个。
+也就是说n个元素的话，查找次数是log2(n)。通常记作log(n)。
+在计算机算法中我们用大写字母O来表示最差情况时间复杂度。因此二分查找的复杂度可以用O(log(n))表示。
+
+<a href='binarysearch.html'>二分查找游戏</a>
+</div>
+</div>
+
+
+</body>
+
+</html>
