@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>二分查找 - 算法游戏</title>
+<title>交换排序 - 算法游戏</title>
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
 <script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
 <style>
@@ -120,7 +120,7 @@ body{
 }
 
 .card{
-  	width: 200px;
+  	width: 100%;
   	height: 44px;
   	border-radius: 5px;
   	margin: 3px 3px 3px 3px;
@@ -234,9 +234,29 @@ var step =0
 var fliped=[]
 
 function swap(){
-	if(fliped.length==2){
-		console.log($(fliped[0]).index())
-		console.log($(fliped[1]).index())
+	if(fliped.length == 2){
+
+		var ea = fliped[0]
+		var eb = fliped[1]
+
+		var idxa = ea.id.substring(4);
+		var idxb = eb.id.substring(4);
+
+		var tmp = values[idxa]
+		values[idxa]=values[idxb]
+		values[idxb]=tmp;
+
+		var ea = $('#emoji'+idxa);
+		var eb = $('#emoji'+idxb);
+		tmp = ea.text();
+		ea.text(eb.text());
+		eb.text(tmp);
+
+		var na = $('#num'+idxa);
+		var nb = $('#num'+idxb);
+		tmp = na.text();
+		na.text(nb.text());
+		nb.text(tmp);
 	}
 }
 
@@ -263,7 +283,7 @@ function unflip(x){
 }
 
 function init(){
-
+	fliped=[]
 	toFind = rand(count);
 	step =0;
 	
