@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>二分查找 - 算法游戏</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0, user-scalable=no">
+<script src='https://code.jquery.com/jquery-3.4.1.min.js'></script>
+<style>
+* {
+	box-sizing: border-box;
+	padding: 0 0 0 0;
+}
+
+body{
+	margin: 0 0 0 0;
+	padding:0 0 50 0;
+ 	background-color: #FFFFFF;
+ 	text-align: center;
+	width: 100%; 	
+}
+
+
+.container {
+	display: block;
+	width: 326px;
+  	margin: 0 auto;
+  	height: 100%;
+  	overflow: auto;
+}
+
+
+ @media screen and (min-width: 100px) {
+	.container {
+		display: block;
+		width: 100px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 150px) {
+	.container {
+		display: block;
+		width: 150px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 200px) {
+	.container {
+		display: block;
+		width: 200px;
+	  	margin: 0 auto;
+	}
+}
+ @media screen and (min-width: 250px) {
+	.container {
+		display: block;
+		width: 250px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 300px) {
+	.container {
+		display: block;
+		width: 300px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 350px) {
+	.container {
+		display: block;
+		width: 350px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 400px) {
+	.container {
+		display: block;
+		width: 400px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 450px) {
+	.container {
+		display: block;
+		width: 450px;
+	  	margin: 0 auto;
+	}
+}
+
+ @media screen and (min-width: 500px) {
+	.container {
+		display: block;
+		width: 500px;
+	  	margin: 0 auto;
+	}
+}
+
+#container, #buttons{
+	width: 50%;
+	float: left;
+	height: 100%;
+}
+
+#buttons {
+	vertical-align: middle;
+	
+}
+
+#header{
+	background-color:#0769ad;
+	color: #FFFFFF;
+	margin: 0 0 0 0;
+	height: 50px;
+	font-size: 26px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.card{
+  	width: 200px;
+  	height: 44px;
+  	border-radius: 5px;
+  	margin: 3px 3px 3px 3px;
+  	text-align: left;
+  	color: gray;
+  	cursor: pointer;
+  	-moz-box-shadow: 2px 2px 3px #c0c0c0; 
+   	-webkit-box-shadow: 1px 2px 3px #c0c0c0; 
+   	box-shadow: 2px 2px 3px #c0c0c0; 
+   	border: 0px solid #c0c0c0;
+   	background-color: #f0f0f0;
+   	padding: 2px 2px 2px 2px;	
+}
+
+.cardLabel{
+	line-height: 44px;
+}
+
+.flipped{
+	background-color: #ff0095;
+	color: #FFFFFF;
+}
+
+.descr{
+	border-radius: 5px;
+	margin: 10px auto;
+	padding: 5px;
+	border: 0px solid #c0c0c0;
+   	background-color: #f0f0f0;
+   	max-width: 500px;
+}
+
+.emoji{
+	font-size: 30px;
+}
+
+.big{
+	color: #0095ff;
+	font-size: 20px;
+}
+
+.shadow{
+   -moz-box-shadow: 3px 3px 4px #888; 
+   -webkit-box-shadow: 3px 3px 4px #888; 
+   box-shadow: 3px 3px 4px #888; 
+}
+
+.resetButton{
+	font-size: 20px;
+	cursor: pointer;
+	text-decoration: none;
+	float: right;
+	padding: 2px;
+	line-height: 20px;
+}
+
+.helpButton {
+	float: right;
+	padding: 2px;
+	line-height: 20px;
+}
+
+.helpButton a {
+	text-decoration: none;
+	font-size: 20px;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="header">
+		交换排序	
+</div>
+
+<div class="container">
+<div class="descr">
+	<span id='reset' class='resetButton'><a>&nbsp;&#128260;</a></span><span class='helpButton'><a href='binarysearch.help.html'>&#128214;</a></span>
+	<div> 请从小到大排好。</div>
+	
+</div>
+</div>
+
+
+<div class="container">
+	<div id="container" ></div>
+	<div id='buttons'>
+		 <div>已经操作<span id="steps" class='big'>0</span>次</div>
+		 <div id="msg" >还没有排好，继续努力！</div>
+		<span onclick="swap()" style="cursor: pointer;font-size: 50px;">&#128256;</span>
+	</div>
+</div>
+
+<div style="height: 50px">&nbsp;</div>
+
+<script language="javascript">
+
+function rand(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+
+
+var emoji=0x1f600
+var count=16
+var values = []
+
+var step =0
+
+var fliped=[]
+
+function swap(){
+	if(fliped.length==2){
+		console.log($(fliped[0]).index())
+		console.log($(fliped[1]).index())
+	}
+}
+
+function flip(){
+	var idx = this.id.substring(4)
+	if(!$(this).hasClass("flipped")){
+		var f = fliped[step%2]
+		if(f!=null){
+			unflip(f)
+		}
+		fliped[step%2]=this
+		$(this).addClass("flipped");
+		$("#num"+idx).text(values[idx])	
+		step++;
+		$('#steps').text(step);
+	}
+
+}
+
+function unflip(x){
+	var idx = x.id.substring(4);
+	$(x).removeClass('flipped');
+	$("#num"+idx).text('******');
+}
+
+function init(){
+
+	toFind = rand(count);
+	step =0;
+	
+	for(var i=0;i<count;i++){
+	  values[i]= rand(1000000)
+	}
+
+
+	$("#container").empty();
+
+    var str=''
+	for(var i=0;i<count;i++){
+		  str += "<div id='card"+i+"' class='card'><span id='emoji"+i+"' class='emoji'>&#"+(emoji+rand(80))+";</span>&nbsp;<span id='num"+i+"' class='emoji'>******</span></div>";
+	}
+    $("#container").append(str);
+	for(var i=0;i<count;i++){
+		var x = i;
+	  	$("#card"+i).click(flip);
+	  	$("#card"+i).hover(function(){  $(this).toggleClass('shadow');});
+	}
+	$("#target").html(values[toFind]);
+	step = 0;
+	$("#msg").html("还没有排好，继续努力！");
+	$("#steps").html("0");
+}
+
+
+init();
+
+$("#reset").click(init);
+
+</script>
+
+</body>
+
+</html>
